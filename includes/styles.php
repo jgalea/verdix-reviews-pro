@@ -61,7 +61,7 @@ add_action( 'wp_enqueue_scripts', 'verdix_pro_enqueue_styles' );
  * preview renders correctly when a pro style is selected.
  */
 function verdix_pro_admin_enqueue_styles( $hook_suffix ) {
-	if ( 'verdix_page_verdix-settings' !== $hook_suffix ) {
+	if ( 'verdix-reviews_page_verdix-settings' !== $hook_suffix ) {
 		return;
 	}
 

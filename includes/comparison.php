@@ -257,21 +257,38 @@ function verdix_pro_compare_field_cons( $review, $post_id ) {
 	return $html;
 }
 
+// The first offer stands in for the product; verdix_get_offers() also maps the legacy price and button fields.
+function verdix_pro_compare_offer( $review ) {
+	if ( ! function_exists( 'verdix_get_offers' ) ) {
+		return array(
+			'price'    => isset( $review['price'] ) ? $review['price'] : '',
+			'currency' => ! empty( $review['currency'] ) ? $review['currency'] : 'USD',
+			'href'     => isset( $review['cta_url'] ) ? $review['cta_url'] : '',
+			'cta_text' => isset( $review['cta_text'] ) ? $review['cta_text'] : '',
+		);
+	}
+	$offers = verdix_get_offers( $review );
+	return $offers ? $offers[0] : array();
+}
+
 function verdix_pro_compare_field_cta( $review, $post_id ) {
-	if ( empty( $review['cta_url'] ) ) {
+	$offer = verdix_pro_compare_offer( $review );
+	if ( empty( $offer['href'] ) ) {
 		return '<span class="verdix-compare__empty">&mdash;</span>';
 	}
-	$text = ! empty( $review['cta_text'] ) ? $review['cta_text'] : __( 'Visit', 'verdix-pro' );
-	return '<a href="' . esc_url( $review['cta_url'] ) . '" class="verdix-compare__cta" target="_blank" rel="noopener noreferrer nofollow">'
+	$text = ! empty( $offer['cta_text'] ) ? $offer['cta_text'] : __( 'Visit', 'verdix-pro' );
+	$rel  = function_exists( 'verdix_offer_rel' ) ? verdix_offer_rel( $offer, $review ) : 'noopener noreferrer nofollow';
+	return '<a href="' . esc_url( $offer['href'] ) . '" class="verdix-compare__cta" target="_blank" rel="' . esc_attr( $rel ) . '">'
 		. esc_html( $text ) . '</a>';
 }
 
 function verdix_pro_compare_field_price( $review, $post_id ) {
-	if ( empty( $review['price'] ) ) {
+	$offer = verdix_pro_compare_offer( $review );
+	if ( empty( $offer['price'] ) ) {
 		return '<span class="verdix-compare__empty">&mdash;</span>';
 	}
-	$currency = ! empty( $review['currency'] ) ? $review['currency'] : 'USD';
+	$currency = ! empty( $offer['currency'] ) ? $offer['currency'] : 'USD';
 	$symbols  = array( 'USD' => '$', 'EUR' => "\xe2\x82\xac", 'GBP' => "\xc2\xa3" );
 	$symbol   = isset( $symbols[ $currency ] ) ? $symbols[ $currency ] : $currency . ' ';
-	return '<span class="verdix-compare__price">' . esc_html( $symbol . $review['price'] ) . '</span>';
+	return '<span class="verdix-compare__price">' . esc_html( $symbol . $offer['price'] ) . '</span>';
 }
