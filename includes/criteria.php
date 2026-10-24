@@ -126,6 +126,16 @@ function verdix_pro_sanitize_criteria( $clean, $data ) {
 		}
 	}
 
+	if ( $clean['use_criteria'] && $clean['criteria'] ) {
+		// Criteria are rated 0-5; scale their average to the review's own rating type.
+		$types           = function_exists( 'verdix_get_rating_types' ) ? verdix_get_rating_types() : array();
+		$type            = isset( $types[ $clean['rating_type'] ?? '' ] ) ? $types[ $clean['rating_type'] ] : array( 'max' => 5, 'step' => 0.5 );
+		$max             = isset( $type['max'] ) ? (float) $type['max'] : 5;
+		$step            = ! empty( $type['step'] ) ? (float) $type['step'] : 0.5;
+		$average         = array_sum( wp_list_pluck( $clean['criteria'], 'rating' ) ) / count( $clean['criteria'] );
+		$clean['rating'] = round( $average / 5 * $max / $step ) * $step;
+	}
+
 	return $clean;
 }
 add_filter( 'verdix_sanitize_review_data', 'verdix_pro_sanitize_criteria', 10, 2 );
