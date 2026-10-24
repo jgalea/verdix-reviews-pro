@@ -105,6 +105,11 @@ function verdix_pro_save_criteria( $data, $post_id ) {
 		}
 	}
 
+	// The overall rating field can be left at 0 when criteria drive it; fill it in so the review isn't treated as empty.
+	if ( $data['use_criteria'] && $data['criteria'] ) {
+		$data['rating'] = array_sum( wp_list_pluck( $data['criteria'], 'rating' ) ) / count( $data['criteria'] );
+	}
+
 	return $data;
 }
 add_filter( 'verdix_meta_box_save_data', 'verdix_pro_save_criteria', 10, 2 );
@@ -146,6 +151,40 @@ function verdix_pro_enqueue_editor_assets() {
 		VERDIX_PRO_URL . 'assets/css/criteria.css',
 		array(),
 		VERDIX_PRO_VERSION
+	);
+	wp_enqueue_script(
+		'verdix-pro-criteria-editor',
+		VERDIX_PRO_URL . 'assets/js/criteria-editor.js',
+		array( 'wp-element', 'wp-components', 'wp-block-editor', 'wp-compose', 'wp-data', 'wp-hooks' ),
+		VERDIX_PRO_VERSION,
+		true
+	);
+
+	$rating_types = array();
+	foreach ( verdix_get_rating_types() as $slug => $type ) {
+		$rating_types[ $slug ] = array(
+			'max'  => (float) $type['max'],
+			'step' => (float) $type['step'],
+		);
+	}
+	wp_add_inline_script(
+		'verdix-pro-criteria-editor',
+		'window.verdixProCriteria = ' . wp_json_encode(
+			array(
+				'ratingTypes' => $rating_types,
+				'i18n'        => array(
+					'title'       => __( 'Multi-Criteria', 'verdix-pro' ),
+					'enable'      => __( 'Enable multi-criteria ratings', 'verdix-pro' ),
+					'label'       => __( 'Criterion', 'verdix-pro' ),
+					'placeholder' => __( 'e.g., Features', 'verdix-pro' ),
+					'rating'      => __( 'Rating', 'verdix-pro' ),
+					'add'         => __( '+ Add Criterion', 'verdix-pro' ),
+					'remove'      => __( 'Remove', 'verdix-pro' ),
+					'help'        => __( 'Overall rating will be calculated as the average.', 'verdix-pro' ),
+				),
+			)
+		) . ';',
+		'before'
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'verdix_pro_enqueue_editor_assets' );

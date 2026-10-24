@@ -105,3 +105,19 @@
 .verdix-criteria-item .components-button.is-small {
 	margin-left: auto;
 }
+
+.verdix-criteria-editor-row {
+	display: grid;
+	grid-template-columns: 1fr 70px;
+	gap: 4px 8px;
+	margin-bottom: 12px;
+}
+
+.verdix-criteria-editor-row .components-button {
+	grid-column: 1 / -1;
+	justify-self: start;
+}
+
+.verdix-criteria-editor-row .components-base-control {
+	margin-bottom: 0;
+}
