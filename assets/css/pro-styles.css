@@ -1,0 +1,1125 @@
+/**
+ * Verdix Pro — premium review box styles.
+ *
+ * Loads after verdix-frontend (depends on it). Defines:
+ *  - Shared pro rating displays: percentage circle, points, score circle
+ *  - Style 2: Card
+ *  - Style 3: Hero
+ *  - Style 4: Split
+ *  - Style 5: Minimal
+ *
+ * @package VerdixPro
+ */
+
+/* ==========================================================================
+   SHARED PRO RATING DISPLAYS
+   ========================================================================== */
+
+/* --- Percentage circle --- */
+
+.verdix-box__percentage {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.verdix-box__percentage-circle {
+	position: relative;
+	width: 64px;
+	height: 64px;
+}
+
+.verdix-box__percentage-circle svg {
+	display: block;
+	transform: rotate(-90deg);
+}
+
+.verdix-box__percentage-circle .percentage-track {
+	fill: none;
+	stroke: var(--sb-accent-light);
+	stroke-width: 5;
+}
+
+.verdix-box__percentage-circle .percentage-fill {
+	fill: none;
+	stroke: var(--sb-accent);
+	stroke-width: 5;
+	stroke-linecap: round;
+	transition: stroke-dashoffset 0.4s ease;
+}
+
+.verdix-box__percentage-value {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-weight: 700;
+	color: #1a1a1a;
+	transform: none;
+}
+
+/* --- Points display --- */
+
+.verdix-box__points {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 2px;
+	flex-shrink: 0;
+	line-height: 1;
+}
+
+.verdix-box__points-value {
+	font-size: 42px;
+	font-weight: 700;
+	color: var(--sb-accent);
+	line-height: 1;
+}
+
+.verdix-box__points-max {
+	font-size: 16px;
+	font-weight: 500;
+	color: #888;
+	line-height: 1;
+}
+
+/* --- Score circle (used in split style) --- */
+
+.verdix-box__score-circle {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	flex-shrink: 0;
+}
+
+.verdix-box__score-circle svg {
+	display: block;
+	transform: rotate(-90deg);
+}
+
+.verdix-box__score-circle .score-track {
+	fill: none;
+	stroke: rgba(255, 255, 255, 0.25);
+	stroke-width: 6;
+}
+
+.verdix-box__score-circle .score-fill {
+	fill: none;
+	stroke: #fff;
+	stroke-width: 6;
+	stroke-linecap: round;
+	transition: stroke-dashoffset 0.4s ease;
+}
+
+.verdix-box__score-circle-value {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 28px;
+	font-weight: 700;
+	color: #fff;
+	font-family: 'DM Sans', sans-serif;
+}
+
+
+/* ==========================================================================
+   2. CARD STYLE
+   ========================================================================== */
+
+.verdix-style-card {
+	font-family: 'DM Sans', sans-serif;
+	border: none;
+	border-radius: 12px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+	background: #fff;
+	overflow: hidden;
+	padding: 0;
+}
+
+/* --- Heading --- */
+
+.verdix-style-card .verdix-box__heading {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #888;
+	margin: 0;
+	padding: 16px 24px 0;
+	background: #fff;
+	border: none;
+}
+
+/* --- Rating row: score + product name + stars --- */
+
+.verdix-style-card .verdix-box__rating {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 24px 20px;
+	background: #fff;
+	border: none;
+	margin: 0;
+}
+
+.verdix-style-card .verdix-box__score-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 72px;
+	height: 72px;
+	background: var(--sb-accent);
+	color: #fff;
+	font-family: 'DM Sans', sans-serif;
+	font-size: 34px;
+	font-weight: 700;
+	line-height: 1;
+	border-radius: 10px;
+	flex-shrink: 0;
+	margin: 0;
+}
+
+.verdix-style-card .verdix-box__product-name {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: #1a1a1a;
+	margin: 0;
+	flex: 1;
+	min-width: 0;
+	white-space: normal;
+	overflow: visible;
+	text-overflow: unset;
+}
+
+.verdix-style-card .verdix-box__stars {
+	flex-shrink: 0;
+}
+
+/* --- Divider --- */
+
+.verdix-style-card .verdix-box__rating::after {
+	content: none;
+}
+
+/* --- Summary --- */
+
+.verdix-style-card .verdix-box__summary {
+	padding: 0 24px 20px;
+	border: none;
+	margin: 0;
+	color: #555;
+	font-size: 15px;
+	line-height: 1.7;
+}
+
+.verdix-style-card .verdix-box__summary-title {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #888;
+	margin: 0 0 8px;
+}
+
+.verdix-style-card .verdix-box__summary p {
+	margin: 0;
+}
+
+/* --- Multi-criteria --- */
+
+.verdix-style-card .verdix-box__criteria {
+	padding: 0 24px 20px;
+	border: none;
+}
+
+.verdix-style-card .verdix-box__criterion {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.verdix-style-card .verdix-box__criterion:last-child {
+	margin-bottom: 0;
+}
+
+.verdix-style-card .verdix-box__criterion-label {
+	flex: 0 0 130px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #444;
+	text-align: right;
+}
+
+.verdix-style-card .verdix-box__criterion-bar {
+	flex: 1;
+	height: 6px;
+	background: #f0f0f0;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.verdix-style-card .verdix-box__criterion-fill {
+	height: 100%;
+	background: var(--sb-accent);
+	border-radius: 3px;
+}
+
+.verdix-style-card .verdix-box__criterion-value {
+	flex: 0 0 28px;
+	font-size: 13px;
+	font-weight: 700;
+	color: #333;
+	text-align: right;
+}
+
+/* --- Pros & cons --- */
+
+.verdix-style-card .verdix-box__pros-cons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+	padding: 0 24px 20px;
+	margin: 0;
+}
+
+.verdix-style-card .verdix-box__pros,
+.verdix-style-card .verdix-box__cons {
+	flex: 1 1 45%;
+	min-width: 180px;
+	padding: 16px;
+	border: none;
+	background: #fafafa;
+	border-radius: 8px;
+}
+
+.verdix-style-card .verdix-box__pros {
+	margin-right: 12px;
+	border-left: 4px solid #28a745;
+}
+
+.verdix-style-card .verdix-box__cons {
+	border-left: 4px solid #dc3545;
+}
+
+.verdix-style-card .verdix-box__list-heading {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #888;
+	margin: 0 0 10px !important;
+	padding: 0 !important;
+}
+
+.verdix-style-card .verdix-box__pros li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #28a745;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.verdix-style-card .verdix-box__cons li::before {
+	content: "\2717";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #dc3545;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+/* --- CTA --- */
+
+.verdix-style-card .verdix-box__cta {
+	padding: 0 24px 24px;
+	border: none;
+	text-align: center;
+}
+
+.verdix-style-card .verdix-box__cta-button {
+	font-family: 'DM Sans', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
+	padding: 12px 36px;
+	border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+	.verdix-style-card .verdix-box__pros-cons {
+		flex-direction: column;
+	}
+
+	.verdix-style-card .verdix-box__pros {
+		margin-right: 0;
+		margin-bottom: 12px;
+	}
+
+	.verdix-style-card .verdix-box__pros,
+	.verdix-style-card .verdix-box__cons {
+		flex: 1 1 100%;
+	}
+
+	.verdix-style-card .verdix-box__criterion-label {
+		flex: 0 0 100px;
+	}
+}
+
+
+/* ==========================================================================
+   3. HERO STYLE
+   ========================================================================== */
+
+.verdix-style-hero {
+	border: none;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+	background: #fff;
+	padding: 0;
+}
+
+/* --- Hero header bar --- */
+
+.verdix-style-hero .verdix-box__heading {
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0;
+	padding: 18px 24px;
+	color: #fff;
+	background: var(--sb-accent);
+	border: none;
+}
+
+/* --- Rating row inside hero (colored background) --- */
+
+.verdix-style-hero .verdix-box__rating {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 16px 24px;
+	background: var(--sb-accent);
+	border: none;
+	margin: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.verdix-style-hero .verdix-box__score-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 56px;
+	height: 56px;
+	padding: 0 12px;
+	background: rgba(255, 255, 255, 0.2);
+	color: #fff;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 1;
+	border-radius: 6px;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	flex-shrink: 0;
+	margin: 0;
+}
+
+.verdix-style-hero .verdix-box__product-name {
+	font-size: 17px;
+	font-weight: 700;
+	color: #fff;
+	flex: 1;
+	white-space: normal;
+	overflow: visible;
+	text-overflow: unset;
+}
+
+/* White stars on accent background */
+.verdix-style-hero .verdix-box__stars {
+	flex-shrink: 0;
+}
+
+.verdix-style-hero .verdix-box__stars-background {
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.verdix-style-hero .verdix-box__stars-foreground {
+	color: #fff;
+}
+
+/* --- White content area below --- */
+
+.verdix-style-hero .verdix-box__summary {
+	padding: 20px 24px;
+	border-bottom: 1px solid #f0f0f0;
+	border-top: none;
+	color: #444;
+	font-size: 15px;
+	line-height: 1.7;
+	margin: 0;
+}
+
+.verdix-style-hero .verdix-box__summary-title {
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #888;
+	margin: 0 0 8px;
+}
+
+.verdix-style-hero .verdix-box__summary p {
+	margin: 0;
+}
+
+/* --- Multi-criteria --- */
+
+.verdix-style-hero .verdix-box__criteria {
+	padding: 16px 24px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.verdix-style-hero .verdix-box__criterion {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 8px;
+}
+
+.verdix-style-hero .verdix-box__criterion:last-child {
+	margin-bottom: 0;
+}
+
+.verdix-style-hero .verdix-box__criterion-label {
+	flex: 0 0 130px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #444;
+	text-align: right;
+}
+
+.verdix-style-hero .verdix-box__criterion-bar {
+	flex: 1;
+	height: 7px;
+	background: #efefef;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.verdix-style-hero .verdix-box__criterion-fill {
+	height: 100%;
+	background: var(--sb-accent);
+	border-radius: 4px;
+}
+
+.verdix-style-hero .verdix-box__criterion-value {
+	flex: 0 0 28px;
+	font-size: 13px;
+	font-weight: 700;
+	color: #333;
+	text-align: right;
+}
+
+/* --- Pros & cons --- */
+
+.verdix-style-hero .verdix-box__pros-cons {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+}
+
+.verdix-style-hero .verdix-box__pros,
+.verdix-style-hero .verdix-box__cons {
+	flex: 1 1 50%;
+	min-width: 0;
+	padding: 16px 24px;
+	border: none;
+}
+
+.verdix-style-hero .verdix-box__pros {
+	border-right: 1px solid #f0f0f0;
+}
+
+.verdix-style-hero .verdix-box__list-heading {
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #888;
+	margin: 0 0 10px !important;
+	padding: 0 !important;
+}
+
+.verdix-style-hero .verdix-box__pros li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #28a745;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.verdix-style-hero .verdix-box__cons li::before {
+	content: "\2717";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #dc3545;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+/* --- CTA --- */
+
+.verdix-style-hero .verdix-box__cta {
+	border-top: 1px solid #f0f0f0;
+	padding: 16px 24px;
+}
+
+@media (max-width: 480px) {
+	.verdix-style-hero .verdix-box__pros-cons {
+		flex-direction: column;
+	}
+
+	.verdix-style-hero .verdix-box__pros,
+	.verdix-style-hero .verdix-box__cons {
+		flex: 1 1 100%;
+	}
+
+	.verdix-style-hero .verdix-box__pros {
+		border-right: none;
+		border-bottom: 1px solid #f0f0f0;
+	}
+
+	.verdix-style-hero .verdix-box__criterion-label {
+		flex: 0 0 100px;
+	}
+}
+
+
+/* ==========================================================================
+   4. SPLIT STYLE
+   ========================================================================== */
+
+.verdix-style-split {
+	border: none;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 28px rgba(0, 0, 0, 0.12);
+	background: #fff;
+	padding: 0;
+}
+
+/* Two-panel grid layout */
+.verdix-style-split .verdix-box__inner {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	min-height: 240px;
+}
+
+/* --- Left panel: dark gradient with accent --- */
+
+.verdix-style-split .verdix-box__left {
+	background: linear-gradient(160deg, var(--sb-accent) 0%, color-mix(in srgb, var(--sb-accent) 60%, #0a0a0a) 100%);
+	padding: 32px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	text-align: center;
+}
+
+.verdix-style-split .verdix-box__heading {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.7);
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+	order: -1;
+}
+
+.verdix-style-split .verdix-box__product-name {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.9);
+	white-space: normal;
+	overflow: visible;
+	text-overflow: unset;
+	margin: 0;
+	text-align: center;
+}
+
+.verdix-style-split .verdix-box__stars-background {
+	color: rgba(255, 255, 255, 0.3);
+}
+
+.verdix-style-split .verdix-box__stars-foreground {
+	color: #fff;
+}
+
+.verdix-style-split .verdix-box__score-box {
+	display: none;
+}
+
+/* --- Right panel: white content --- */
+
+.verdix-style-split .verdix-box__right {
+	padding: 28px 28px 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.verdix-style-split .verdix-box__rating {
+	display: none;
+}
+
+.verdix-style-split .verdix-box__summary {
+	padding: 0 0 16px;
+	border: none;
+	margin: 0;
+	color: #444;
+	font-size: 15px;
+	line-height: 1.7;
+}
+
+.verdix-style-split .verdix-box__summary-title {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #888;
+	margin: 0 0 8px;
+}
+
+.verdix-style-split .verdix-box__summary p {
+	margin: 0;
+}
+
+/* --- Multi-criteria --- */
+
+.verdix-style-split .verdix-box__criteria {
+	padding: 0 0 16px;
+	border: none;
+}
+
+.verdix-style-split .verdix-box__criterion {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 8px;
+}
+
+.verdix-style-split .verdix-box__criterion:last-child {
+	margin-bottom: 0;
+}
+
+.verdix-style-split .verdix-box__criterion-label {
+	flex: 0 0 120px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #555;
+	text-align: right;
+}
+
+.verdix-style-split .verdix-box__criterion-bar {
+	flex: 1;
+	height: 6px;
+	background: #efefef;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.verdix-style-split .verdix-box__criterion-fill {
+	height: 100%;
+	background: var(--sb-accent);
+	border-radius: 3px;
+}
+
+.verdix-style-split .verdix-box__criterion-value {
+	flex: 0 0 28px;
+	font-size: 12px;
+	font-weight: 700;
+	color: #333;
+	text-align: right;
+}
+
+/* --- Pros & cons --- */
+
+.verdix-style-split .verdix-box__pros-cons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+.verdix-style-split .verdix-box__pros,
+.verdix-style-split .verdix-box__cons {
+	flex: 1 1 40%;
+	min-width: 0;
+	padding: 0;
+	border: none;
+}
+
+.verdix-style-split .verdix-box__list-heading {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #888;
+	margin: 0 0 8px !important;
+	padding: 0 !important;
+}
+
+.verdix-style-split .verdix-box__pros li,
+.verdix-style-split .verdix-box__cons li {
+	font-size: 14px;
+}
+
+.verdix-style-split .verdix-box__pros li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #28a745;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.verdix-style-split .verdix-box__cons li::before {
+	content: "\2717";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #dc3545;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+/* --- CTA --- */
+
+.verdix-style-split .verdix-box__cta {
+	border: none;
+	padding: 16px 0 0;
+	text-align: left;
+}
+
+.verdix-style-split .verdix-box__cta-button {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 10px 28px;
+	border-radius: 6px;
+}
+
+/* Responsive: stack panels on mobile */
+@media (max-width: 680px) {
+	.verdix-style-split .verdix-box__inner {
+		grid-template-columns: 1fr;
+	}
+
+	.verdix-style-split .verdix-box__left {
+		padding: 24px 20px;
+		flex-direction: row;
+		justify-content: flex-start;
+		gap: 20px;
+		text-align: left;
+	}
+
+	.verdix-style-split .verdix-box__left .verdix-box__heading {
+		display: none;
+	}
+
+	.verdix-style-split .verdix-box__product-name {
+		text-align: left;
+	}
+
+	.verdix-style-split .verdix-box__right {
+		padding: 20px;
+	}
+
+	.verdix-style-split .verdix-box__pros-cons {
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.verdix-style-split .verdix-box__cta {
+		text-align: center;
+	}
+
+	.verdix-style-split .verdix-box__criterion-label {
+		flex: 0 0 90px;
+	}
+}
+
+
+/* ==========================================================================
+   5. MINIMAL STYLE
+   ========================================================================== */
+
+.verdix-style-minimal {
+	font-family: 'DM Sans', sans-serif;
+	border: none;
+	border-top: 3px solid var(--sb-accent);
+	border-radius: 0;
+	background: #fff;
+	padding: 32px 0 0;
+	box-shadow: none;
+}
+
+/* --- Heading --- */
+
+.verdix-style-minimal .verdix-box__heading {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--sb-accent);
+	margin: 0 0 24px;
+	padding: 0;
+	background: none;
+	border: none;
+}
+
+/* --- Rating row --- */
+
+.verdix-style-minimal .verdix-box__rating {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 0 0 28px;
+	margin: 0;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #efefef;
+}
+
+.verdix-style-minimal .verdix-box__score-box {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	background: none;
+	color: var(--sb-accent);
+	font-family: 'Instrument Serif', serif;
+	font-size: 64px;
+	font-weight: 400;
+	font-style: italic;
+	line-height: 1;
+	min-width: auto;
+	height: auto;
+	padding: 0;
+	border-radius: 0;
+	flex-shrink: 0;
+	margin: 0;
+}
+
+.verdix-style-minimal .verdix-box__product-name {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 22px;
+	font-weight: 700;
+	color: #1a1a1a;
+	flex: 1;
+	white-space: normal;
+	overflow: visible;
+	text-overflow: unset;
+}
+
+.verdix-style-minimal .verdix-box__stars {
+	flex-shrink: 0;
+}
+
+/* --- Summary --- */
+
+.verdix-style-minimal .verdix-box__summary {
+	padding: 24px 0;
+	border: none;
+	border-bottom: 1px solid #efefef;
+	margin: 0;
+	color: #555;
+	font-size: 15px;
+	line-height: 1.8;
+}
+
+.verdix-style-minimal .verdix-box__summary-title {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #aaa;
+	margin: 0 0 10px;
+}
+
+.verdix-style-minimal .verdix-box__summary p {
+	margin: 0;
+}
+
+/* --- Multi-criteria --- */
+
+.verdix-style-minimal .verdix-box__criteria {
+	padding: 20px 0;
+	border-bottom: 1px solid #efefef;
+}
+
+.verdix-style-minimal .verdix-box__criterion {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.verdix-style-minimal .verdix-box__criterion:last-child {
+	margin-bottom: 0;
+}
+
+.verdix-style-minimal .verdix-box__criterion-label {
+	flex: 0 0 140px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #666;
+	text-align: right;
+}
+
+.verdix-style-minimal .verdix-box__criterion-bar {
+	flex: 1;
+	height: 4px;
+	background: #efefef;
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.verdix-style-minimal .verdix-box__criterion-fill {
+	height: 100%;
+	background: var(--sb-accent);
+	border-radius: 2px;
+}
+
+.verdix-style-minimal .verdix-box__criterion-value {
+	flex: 0 0 28px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #444;
+	text-align: right;
+}
+
+/* --- Pros & cons --- */
+
+.verdix-style-minimal .verdix-box__pros-cons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 48px;
+	padding: 24px 0;
+	margin: 0;
+	border-bottom: 1px solid #efefef;
+}
+
+.verdix-style-minimal .verdix-box__pros,
+.verdix-style-minimal .verdix-box__cons {
+	flex: 1 1 45%;
+	min-width: 200px;
+	padding: 0;
+	border: none;
+}
+
+.verdix-style-minimal .verdix-box__list-heading {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #aaa;
+	margin: 0 0 12px !important;
+	padding: 0 !important;
+}
+
+/* Arrow indicators for pros */
+.verdix-style-minimal .verdix-box__pros li {
+	color: #333;
+}
+
+.verdix-style-minimal .verdix-box__pros li::before {
+	content: "\2192";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: var(--sb-accent);
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+/* Muted dash for cons */
+.verdix-style-minimal .verdix-box__cons li {
+	color: #888;
+}
+
+.verdix-style-minimal .verdix-box__cons li::before {
+	content: "\2013";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #bbb;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+/* --- CTA --- */
+
+.verdix-style-minimal .verdix-box__cta {
+	padding: 24px 0 0;
+	border: none;
+	text-align: left;
+}
+
+.verdix-style-minimal .verdix-box__cta-button {
+	font-family: 'DM Sans', sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 10px 28px;
+	border-radius: 4px;
+	letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+	.verdix-style-minimal .verdix-box__pros-cons {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.verdix-style-minimal .verdix-box__pros,
+	.verdix-style-minimal .verdix-box__cons {
+		flex: 1 1 100%;
+	}
+
+	.verdix-style-minimal .verdix-box__score-box {
+		font-size: 48px;
+	}
+
+	.verdix-style-minimal .verdix-box__criterion-label {
+		flex: 0 0 100px;
+	}
+}

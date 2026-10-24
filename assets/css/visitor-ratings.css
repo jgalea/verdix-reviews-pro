@@ -1,0 +1,167 @@
+/* Review box visitor aggregate */
+.verdix-visitor-rating {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 20px;
+	background: #f9f9f9;
+	border-bottom: 1px solid var(--sb-border, #e7e7e7);
+	font-size: 13px;
+	color: #666;
+}
+
+.verdix-visitor-rating__label {
+	font-weight: 600;
+	color: #555;
+}
+
+.verdix-visitor-rating__score {
+	font-weight: 700;
+	color: #333;
+}
+
+.verdix-visitor-rating__stars {
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	line-height: 1;
+}
+
+.verdix-visitor-rating__stars-bg {
+	display: inline-flex;
+	align-items: center;
+	gap: 1px;
+	color: #ddd;
+}
+
+.verdix-visitor-rating__stars-fg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #f0b849;
+}
+
+.verdix-visitor-rating__stars-bg svg,
+.verdix-visitor-rating__stars-fg svg {
+	display: block;
+	flex-shrink: 0;
+}
+
+.verdix-visitor-rating__count {
+	color: #999;
+	font-size: 12px;
+}
+
+/* Card style override */
+.verdix-style-card .verdix-visitor-rating {
+	padding: 10px 28px;
+	background: #fafafa;
+	border-bottom: none;
+	border-radius: 0;
+}
+
+/* Hero style override */
+.verdix-style-hero .verdix-visitor-rating {
+	padding: 10px 24px;
+}
+
+/* Split style override */
+.verdix-style-split .verdix-visitor-rating {
+	padding: 10px 24px;
+}
+
+/* Minimal style override */
+.verdix-style-minimal .verdix-visitor-rating {
+	padding: 10px 32px;
+	background: transparent;
+	border-bottom: 1px solid #e8e8e6;
+}
+
+/* Comment form rating stars */
+.verdix-comment-rating {
+	margin-bottom: 16px;
+	padding: 16px;
+	background: #f9f9f9;
+	border: 1px solid #e0e0e0;
+	border-radius: 4px;
+}
+
+.verdix-comment-rating__heading {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.verdix-comment-rating__already {
+	margin: 0;
+	color: #666;
+	font-style: italic;
+}
+
+.verdix-comment-rating__stars {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.verdix-comment-star {
+	cursor: pointer;
+	color: #ddd;
+	transition: color 0.15s, transform 0.1s;
+	display: inline-flex;
+}
+
+.verdix-comment-star:hover {
+	transform: scale(1.15);
+}
+
+.verdix-comment-star.active {
+	color: #f0b849;
+}
+
+.verdix-comment-star.hover {
+	color: #f0b849;
+}
+
+/* Per-criteria in comment form */
+.verdix-comment-rating__criteria {
+	margin-top: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.verdix-comment-criterion {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.verdix-comment-criterion__label {
+	flex: 0 0 120px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #555;
+	text-align: right;
+}
+
+@media (max-width: 480px) {
+	.verdix-visitor-rating {
+		flex-wrap: wrap;
+		gap: 4px;
+	}
+
+	.verdix-comment-criterion {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.verdix-comment-criterion__label {
+		text-align: left;
+		flex: none;
+	}
+}
