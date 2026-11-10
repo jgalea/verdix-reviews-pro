@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Verdix Reviews Pro
+ * Plugin Name: Verdix Reviews PRO
  * Plugin URI:  https://github.com/jgalea/verdix-reviews-pro
  * Description: Pro add-on for Verdix Reviews. Adds multi-criteria ratings, visitor ratings, extra rating types and box styles, comparison tables, AI-drafted pros and cons, and migration from WP Product Review.
- * Version:     1.2.0
+ * Version:     1.2.1
  * Author:      Jean Galea
  * Author URI:  https://jeangalea.com
  * License:     GPL-2.0-or-later
@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'VERDIX_PRO_VERSION', '1.2.0' );
+define( 'VERDIX_PRO_VERSION', '1.2.1' );
 define( 'VERDIX_PRO_FILE', __FILE__ );
 define( 'VERDIX_PRO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VERDIX_PRO_URL', plugin_dir_url( __FILE__ ) );

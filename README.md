@@ -1,4 +1,4 @@
-<h1 align="center">Verdix Reviews Pro</h1>
+<h1 align="center">Verdix Reviews PRO</h1>
 
 <p align="center"><a href="https://wordpress.org/plugins/verdix-reviews/">Verdix Reviews</a> | Verdix Reviews Pro</p>
 
